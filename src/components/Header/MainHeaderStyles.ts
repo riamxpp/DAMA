@@ -12,6 +12,16 @@ const WrapperMainHeader = styled.div`
   width: 900px;
   margin: 0 auto;
   display: flex;
+  @media (max-width: 950px) {
+    width: 750px;
+  }
+  @media (max-width: 800px) {
+    width: 600px;
+  }
+  @media (max-width: 650px) {
+    flex-direction: column;
+    width: 90%;
+  }
 `;
 
 const ContainerLogoSociais = styled.div`
@@ -25,12 +35,16 @@ const ContainerRedesSociaisHeader = styled.div`
   width: 300px;
   display: flex;
   gap: 0.9rem;
+  @media (max-width: 650px) {
+    margin-bottom: 1rem;
+  }
 `;
 
 const CapsulaRedeSocial = styled.div``;
 
 const LogoMainHeader = styled.a`
   font-family: "Roboto", sans-serif;
+  width: 300px;
   position: relative;
   font-size: 2rem;
   font-weight: 700;
@@ -61,6 +75,9 @@ const ContainerOptionsMainHeader = styled.div`
   display: flex;
   width: auto;
   gap: 3rem;
+  @media (max-width: 650px) {
+    flex-wrap: wrap;
+  }
 `;
 
 const NavegacaoMainHeder = styled.nav``;
