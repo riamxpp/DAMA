@@ -1,12 +1,16 @@
 import React from "react";
+import { ShopCarInterface } from "./ShopCarInterface";
 
-const ShopCar = () => {
+const ShopCar = (props: ShopCarInterface) => {
+  const widthCar = props.width ? props.width : "16";
+  const heightCar = props.height ? props.height : "16";
+  const fillCar = props.fill ? props.fill : "white";
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
-      width="16"
-      height="16"
-      fill="white"
+      width={widthCar}
+      height={heightCar}
+      fill={fillCar}
       className="bi bi-cart"
       viewBox="0 0 16 16"
     >

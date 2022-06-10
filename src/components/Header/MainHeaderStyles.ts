@@ -3,7 +3,7 @@ import { colors } from "../../colors";
 
 const MainHeaderComponent = styled.header`
   width: 100%;
-  background-color: #252525;
+  background-color: ${colors.mainHeader};
   padding: 3rem 0;
   color: ${colors.PrimaryTextColor};
 `;
