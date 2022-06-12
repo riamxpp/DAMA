@@ -2,12 +2,13 @@ import styled from "styled-components";
 import { colors } from "../../colors";
 import {
   ButtonFotoAtualInterface,
+  ContainerFotosProdutosInterface,
   FotoProdutoPrincipalInterface,
 } from "./ShowPrincipaisProdutosInterface";
 
 const ShowProdutosComponente = styled.div`
   width: 100%;
-  height: 550px;
+  height: 600px;
   display: flex;
 `;
 
@@ -20,22 +21,24 @@ const ProdutosPrincipaisProdutos = styled.div`
 const WrapperFotosProduto = styled.div`
   width: 100%;
   height: 100%;
+  overflow: hidden;
 `;
 
-const ContainerFotosProdutos = styled.div`
+const ContainerFotosProdutos = styled.div<ContainerFotosProdutosInterface>`
   width: 100%;
   height: 100%;
   display: flex;
-  flex-direction: column;
+  transition: 0.3s ease-in;
+  transform: ${(props) => `translateX(${props.moveSlide}px)`};
 `;
 
 const FotoProdutoPrincipal = styled.div<FotoProdutoPrincipalInterface>`
   width: 100%;
   height: 100%;
-  flex-shrink: 0;
   background-image: url(${(props) => props.backgroundFoto});
   background-repeat: no-repeat;
   background-position: 50% 50%;
+  flex-shrink: 0;
 `;
 
 const WrapperInformacoesProduto = styled.div`
@@ -47,6 +50,7 @@ const WrapperInformacoesProduto = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  z-index: 1;
 `;
 
 const ImagemProduto = styled.div``;
@@ -140,6 +144,7 @@ const ButtonFotoAtual = styled.button<ButtonFotoAtualInterface>`
   height: 12px;
   border-radius: 50%;
   border: none;
+  z-index: 1;
   background-color: ${(props) =>
     props.backgroundColor ? props.backgroundColor : colors.optionHeaderColor};
   cursor: pointer;

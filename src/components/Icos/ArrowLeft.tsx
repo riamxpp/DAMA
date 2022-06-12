@@ -1,12 +1,15 @@
 import React from "react";
+import { ArrowInterface } from "./ArrowsInterface";
 
-const ArrowLeft = () => {
+const ArrowLeft = (props: ArrowInterface) => {
+  const colorArrow = props.currentColor ? props.currentColor : "white";
+
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
       width="30"
       height="30"
-      fill="white"
+      fill={colorArrow}
       className="bi bi-chevron-left"
       viewBox="0 0 16 16"
     >

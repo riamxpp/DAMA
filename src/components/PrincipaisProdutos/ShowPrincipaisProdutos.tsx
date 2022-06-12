@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import {
   AdicionarAoCarrinho,
   ButtonBuyNow,
@@ -32,6 +32,7 @@ import ArrowLeft from "../Icos/ArrowLeft";
 import ArrowRight from "../Icos/ArrowRigth";
 import Reta from "../Icos/Reta";
 import ShopCar from "../Icos/ShopCar";
+import { colors } from "../../colors";
 
 const ShowPrincipaisProdutos = (props: ShowPrincipaisProdutosInterface) => {
   const [dadosProduto, setDadosProduto] = useState<ProdutoInterface>({
@@ -40,6 +41,52 @@ const ShowPrincipaisProdutos = (props: ShowPrincipaisProdutosInterface) => {
     price: dados[props.produtoAtual].price,
     pictures: [...dados[props.produtoAtual].pictures],
   });
+  const [slidePosition, setSlidePosition] = useState(1);
+  const [moveSlide, setMoveSlide] = useState(0);
+  const containerFotoRef = useRef<HTMLDivElement>(null);
+  const PRIMEIRO_SLIDE = 1;
+  const QUANTIDADE_FOTOS = dadosProduto.pictures.length;
+
+  function nextSlide() {
+    if (containerFotoRef.current?.offsetWidth)
+      setMoveSlide(
+        (prev) => (prev -= Number(containerFotoRef.current?.offsetWidth))
+      );
+    if (slidePosition !== QUANTIDADE_FOTOS)
+      setSlidePosition((prev) => (prev += 1));
+  }
+
+  function prevSlide() {
+    if (containerFotoRef.current) {
+      setMoveSlide(
+        (prev) => (prev += Number(containerFotoRef.current?.offsetWidth))
+      );
+    }
+    if (slidePosition !== PRIMEIRO_SLIDE)
+      setSlidePosition((prev) => (prev -= 1));
+  }
+
+  function mudaSlideAoClique(position: number) {
+    let diferencaDeSlide = 0;
+    if (position > slidePosition) {
+      diferencaDeSlide = position - slidePosition;
+      setMoveSlide(
+        (prev) =>
+          (prev -=
+            diferencaDeSlide * Number(containerFotoRef.current?.offsetWidth))
+      );
+    } else if (position < slidePosition) {
+      diferencaDeSlide = slidePosition - position;
+
+      setMoveSlide(
+        (prev) =>
+          (prev +=
+            diferencaDeSlide * Number(containerFotoRef.current?.offsetWidth))
+      );
+    }
+    setSlidePosition(position);
+  }
+
   return (
     <ShowProdutosComponente>
       <ProdutosPrincipaisProdutos>
@@ -63,9 +110,11 @@ const ShowPrincipaisProdutos = (props: ShowPrincipaisProdutosInterface) => {
         </WrapperInformacoesProduto>
         {/* Slide */}
         <WrapperFotosProduto>
-          <ContainerFotosProdutos>
-            {dadosProduto.pictures.map((item) => (
+          <ContainerFotosProdutos moveSlide={moveSlide}>
+            {dadosProduto.pictures.map((item, index) => (
               <FotoProdutoPrincipal
+                key={index}
+                ref={containerFotoRef}
                 backgroundFoto={item}
               ></FotoProdutoPrincipal>
             ))}
@@ -75,24 +124,43 @@ const ShowPrincipaisProdutos = (props: ShowPrincipaisProdutosInterface) => {
       {/* navegação a direita */}
       <NavInformacoesProduto>
         <SpanQuantidadeDeFotos>
-          <SpanFotoAtual>01</SpanFotoAtual>/{dadosProduto.pictures.length}
+          <SpanFotoAtual>{slidePosition}</SpanFotoAtual>/{QUANTIDADE_FOTOS}
         </SpanQuantidadeDeFotos>
         <ContainerFotoAtual>
           <NavFotoAtual>
-            <ButtonFotoAtual></ButtonFotoAtual>
-            <ButtonFotoAtual></ButtonFotoAtual>
-            <ButtonFotoAtual></ButtonFotoAtual>
+            {dadosProduto.pictures.map((item, index) => (
+              <ButtonFotoAtual
+                key={index}
+                backgroundColor={
+                  index + 1 === slidePosition ? colors.PrimaryTextColor : ""
+                }
+                onClick={() => mudaSlideAoClique(index + 1)}
+              ></ButtonFotoAtual>
+            ))}
           </NavFotoAtual>
         </ContainerFotoAtual>
         <ContainerNextAndPrevFoto>
-          <ButtonPrev>
-            <ArrowLeft />
+          <ButtonPrev disabled={slidePosition === 1} onClick={prevSlide}>
+            <ArrowLeft
+              currentColor={
+                slidePosition === 1 ? colors.initialHeader : "white"
+              }
+            />
           </ButtonPrev>
           <RetaSpan>
             <Reta />
           </RetaSpan>
-          <ButtonNext>
-            <ArrowRight />
+          <ButtonNext
+            disabled={slidePosition === QUANTIDADE_FOTOS}
+            onClick={nextSlide}
+          >
+            <ArrowRight
+              currentColor={
+                slidePosition === QUANTIDADE_FOTOS
+                  ? colors.initialHeader
+                  : "white"
+              }
+            />
           </ButtonNext>
         </ContainerNextAndPrevFoto>
       </NavInformacoesProduto>

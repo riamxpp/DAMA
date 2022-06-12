@@ -23,3 +23,7 @@ export interface ButtonFotoAtualInterface {
 export interface FotoProdutoPrincipalInterface {
   backgroundFoto: string;
 }
+
+export interface ContainerFotosProdutosInterface {
+  moveSlide: number;
+}
