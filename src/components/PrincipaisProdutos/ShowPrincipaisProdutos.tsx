@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import {
   AdicionarAoCarrinho,
   ButtonBuyNow,
@@ -46,6 +46,15 @@ const ShowPrincipaisProdutos = (props: ShowPrincipaisProdutosInterface) => {
   const containerFotoRef = useRef<HTMLDivElement>(null);
   const PRIMEIRO_SLIDE = 1;
   const QUANTIDADE_FOTOS = dadosProduto.pictures.length;
+
+  useEffect(() => {
+    setDadosProduto({
+      name: dados[props.produtoAtual].name,
+      description: dados[props.produtoAtual].description,
+      price: dados[props.produtoAtual].price,
+      pictures: [...dados[props.produtoAtual].pictures],
+    });
+  }, [props.produtoAtual]);
 
   function nextSlide() {
     if (containerFotoRef.current?.offsetWidth)

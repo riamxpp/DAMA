@@ -6,11 +6,11 @@ const headphone3 = require("./assents/headphone-3.png");
 const notebook1 = require("./assents/notebook-1.png");
 const notebook2 = require("./assents/notebook-2.png");
 const computador1 = require("./assents/computador-1.png");
-const iphone2 = require("./assents/iphone-2.png");
+const iphone1 = require("./assents/iphone-12-1.png");
 
 const api = {
   controle: {
-    name: "nome",
+    name: "controle",
     description: "Play your favorite game.",
     price: "100",
     pictures: [controle1, controle2],
@@ -41,7 +41,7 @@ const api = {
     description:
       "orem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum.",
     price: "4300",
-    pictures: [iphone2],
+    pictures: [iphone1],
   },
 };
 
