@@ -6,13 +6,6 @@ const PrincipaisProdutosComponent = styled.section`
   height: auto;
   padding: 3rem 0;
   background: ${colors.mainHeader};
-  /*linear-gradient: 
-   ( 150deg,
-    ${colors.mainHeader} 75%,
-    ${colors.mainHeader} 50%,
-    #fff 76%,
-    #fff 100%
-  ); */
 `;
 
 const ContainerProdutosPrincipais = styled.div`
@@ -20,6 +13,10 @@ const ContainerProdutosPrincipais = styled.div`
   height: auto;
   margin: 0 auto;
   display: flex;
+  @media (max-width: 950px) {
+    flex-direction: column;
+    width: 100%;
+  }
 `;
 
 export { PrincipaisProdutosComponent, ContainerProdutosPrincipais };

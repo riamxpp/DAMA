@@ -3,9 +3,19 @@ import { colors } from "../../colors";
 
 const NavProdutosComponente = styled.nav`
   width: 3.5rem;
+
+  @media (max-width: 950px) {
+    width: auto;
+    display: flex;
+    justify-content: center;
+  }
 `;
 
-const ListaNavProdutos = styled.ul``;
+const ListaNavProdutos = styled.ul`
+  @media (max-width: 950px) {
+    display: flex;
+  }
+`;
 
 const ItemProdutoNav = styled.li`
   background-color: ${colors.initialHeader};
@@ -17,6 +27,9 @@ const ItemProdutoNav = styled.li`
   cursor: pointer;
   &:hover {
     background-color: ${colors.initialHeader + 50};
+  }
+  @media (max-width: 950px) {
+    flex-shrink: 0;
   }
 `;
 

@@ -10,12 +10,20 @@ const ShowProdutosComponente = styled.div`
   width: 100%;
   height: 600px;
   display: flex;
+
+  @media (max-width: 950px) {
+    flex-direction: column;
+    height: 700px;
+  }
 `;
 
 const ProdutosPrincipaisProdutos = styled.div`
   width: 100%;
   height: 100%;
   position: relative;
+
+  @media (max-width: 950px) {
+  }
 `;
 
 const WrapperFotosProduto = styled.div`
@@ -39,6 +47,9 @@ const FotoProdutoPrincipal = styled.div<FotoProdutoPrincipalInterface>`
   background-repeat: no-repeat;
   background-position: 50% 50%;
   flex-shrink: 0;
+  @media (max-width: 700px) {
+    background-size: 80%;
+  }
 `;
 
 const WrapperInformacoesProduto = styled.div`
@@ -61,6 +72,15 @@ const ProdutosPrincipaisTitulo = styled.h2`
   font-family: "Roboto", sans-serif;
   text-transform: uppercase;
   margin: 0 0 0 0;
+  @media (max-width: 700px) {
+    font-size: 5rem;
+  }
+  @media (max-width: 600px) {
+    font-size: 4rem;
+  }
+  @media (max-width: 450px) {
+    font-size: 2.5rem;
+  }
 `;
 
 const ProdutosPrincipaisDescricao = styled.p`
@@ -68,6 +88,13 @@ const ProdutosPrincipaisDescricao = styled.p`
   text-align: center;
   color: ${colors.PrimaryTextColor};
   font-family: "Roboto", sans-serif;
+  @media (max-width: 600px) {
+    font-size: 0.9rem;
+  }
+  @media (max-width: 450px) {
+    font-size: 0.8rem;
+    width: 90%;
+  }
 `;
 
 const ProdutosPrinpaisPreco = styled.span`
@@ -119,6 +146,12 @@ const NavInformacoesProduto = styled.nav`
   align-items: center;
   justify-content: flex-end;
   gap: 2rem;
+  @media (max-width: 950px) {
+    flex-direction: row;
+    justify-content: center;
+    height: auto;
+    width: 100%;
+  }
 `;
 
 const SpanQuantidadeDeFotos = styled.span`
@@ -137,6 +170,9 @@ const NavFotoAtual = styled.nav`
   flex-direction: column;
   gap: 0.5rem;
   align-items: center;
+  @media (max-width: 950px) {
+    flex-direction: row;
+  }
 `;
 
 const ButtonFotoAtual = styled.button<ButtonFotoAtualInterface>`
@@ -157,6 +193,10 @@ const ContainerNextAndPrevFoto = styled.div`
   width: 100%;
   height: 4rem;
   position: relative;
+
+  @media (max-width: 950px) {
+    width: 6rem;
+  }
 `;
 
 const ButtonNext = styled.button`

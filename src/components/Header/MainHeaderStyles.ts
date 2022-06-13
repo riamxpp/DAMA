@@ -38,6 +38,9 @@ const ContainerRedesSociaisHeader = styled.div`
   @media (max-width: 650px) {
     margin-bottom: 1rem;
   }
+  @media (max-width: 350px) {
+    width: 100%;
+  }
 `;
 
 const CapsulaRedeSocial = styled.div``;
@@ -69,6 +72,12 @@ const LogoMainHeader = styled.a`
     position: absolute;
     left: 73px;
   }
+  @media (max-width: 350px) {
+    width: 150px;
+    &::before {
+      left: 19%;
+    }
+  } ;
 `;
 
 const ContainerOptionsMainHeader = styled.div`

@@ -54,6 +54,8 @@ const ShowPrincipaisProdutos = (props: ShowPrincipaisProdutosInterface) => {
       price: dados[props.produtoAtual].price,
       pictures: [...dados[props.produtoAtual].pictures],
     });
+    window.addEventListener("resize", resetaSlide);
+    return () => window.removeEventListener("resize", resetaSlide);
   }, [props.produtoAtual]);
 
   function nextSlide() {
@@ -94,6 +96,11 @@ const ShowPrincipaisProdutos = (props: ShowPrincipaisProdutosInterface) => {
       );
     }
     setSlidePosition(position);
+  }
+
+  function resetaSlide() {
+    setSlidePosition(PRIMEIRO_SLIDE);
+    setMoveSlide(0);
   }
 
   return (
