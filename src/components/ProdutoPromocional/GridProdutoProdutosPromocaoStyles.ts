@@ -55,7 +55,8 @@ const FotoUnica = styled.div<FotoUnicaInterface>`
   background-size: 50%;
   background-position: 50% 50%;
   background-color: #e7e7e7;
-  border: ${(props) => (props.borderColor ? "2px solid #333" : "")};
+  border: ${(props) =>
+    props.borderColor ? "2px solid #333" : "2px solid transparent"};
   cursor: pointer;
 `;
 

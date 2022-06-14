@@ -8,7 +8,7 @@ export interface FotoPrincipalProdutoInterface {
 
 export interface FotoUnicaInterface {
   backgroundImg: string;
-  borderColor?: string;
+  borderColor?: boolean;
 }
 
 export interface GridProdutosItemInteracaoInterface {

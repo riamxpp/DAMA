@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Heart from "../Icos/Heart";
 import Refresh from "../Icos/Refresh";
 import ShopCar from "../Icos/ShopCar";
@@ -29,20 +29,40 @@ const smartwatchAzul = require("../../assents/smartwatch-azul.jpg");
 const leptop = require("../../assents/notebook-spcetre.jpg");
 
 const GridProdutoProdutosPromocao = () => {
+  const [fotoAtual, setFotoAtual] = useState(smartwatch1);
+  const [ativaBordar, setAtivadorBordar] = useState(1);
+
+  function mudaFotoPrincipal(foto: any, ativador: number) {
+    setFotoAtual(foto);
+    setAtivadorBordar(ativador);
+  }
+
   return (
     <GridProdutosPromocaoComponent>
       <ContainerProdutoPrincipal>
         <WrapperProdutoFoto>
           <FotoPrincipalProduto
-            backgroundImg={smartwatch1}
+            backgroundImg={fotoAtual}
           ></FotoPrincipalProduto>
           {/* Map para as fotos aq */}
 
           <CarroselFotos>
             {" "}
-            <FotoUnica borderColor="2" backgroundImg={smartwatch1} />
-            <FotoUnica backgroundImg={smartwatch2} />
-            <FotoUnica backgroundImg={smartwatch3} />
+            <FotoUnica
+              borderColor={ativaBordar === 1}
+              backgroundImg={smartwatch1}
+              onClick={(event) => mudaFotoPrincipal(smartwatch1, 1)}
+            />
+            <FotoUnica
+              borderColor={ativaBordar === 2}
+              backgroundImg={smartwatch2}
+              onClick={() => mudaFotoPrincipal(smartwatch2, 2)}
+            />
+            <FotoUnica
+              borderColor={ativaBordar === 3}
+              backgroundImg={smartwatch3}
+              onClick={() => mudaFotoPrincipal(smartwatch3, 3)}
+            />
           </CarroselFotos>
         </WrapperProdutoFoto>
         {/* principal */}
@@ -71,7 +91,7 @@ const GridProdutoProdutosPromocao = () => {
             <GridProdutosItemInteracao>
               <Heart />
             </GridProdutosItemInteracao>
-            <GridProdutosItemInteracao>
+            <GridProdutosItemInteracao backgroundColor="#f5c616">
               <ShopCar />
             </GridProdutosItemInteracao>
           </GridProdutosContainerInteracoes>
