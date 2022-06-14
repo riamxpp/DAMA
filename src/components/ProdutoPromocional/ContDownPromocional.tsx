@@ -21,25 +21,29 @@ import {
   Vendidos,
   WrapperTempoPromocao,
 } from "./ContDownPromocionalStyles";
+const fotoProdutoPromocao = require("../../assents/celular-promocao.png");
 
 const ContDownPromocional = () => {
   return (
     <ContDownPromocionalComponent>
       {/* Foto */}
-      <ContainerFotoProduto></ContainerFotoProduto>
+      <ContainerFotoProduto
+        backgroundImg={fotoProdutoPromocao}
+      ></ContainerFotoProduto>
       {/* Informações */}
       <ContainerInformacoesProduto>
         <ContainerNomeAndPreco>
           <NomeProduto>iphone 6s 64gb</NomeProduto>
-          <SaleOff>sale off</SaleOff>
+          <SaleOff> sale off </SaleOff>
           <PrecoProdutoComDesconto>$ 250.00</PrecoProdutoComDesconto>
-          <PrecoProdutoSemDesconto>- $ 350.00</PrecoProdutoSemDesconto>
+          {" - "}
+          <PrecoProdutoSemDesconto> 350.00</PrecoProdutoSemDesconto>
         </ContainerNomeAndPreco>
         <ContainerVendasAndAvaliacao>
           <Vendidos>
             <SpanVendaAndAvaliacao>
               Already sold
-              <NumeroDeVendaAndAvaliacao>16</NumeroDeVendaAndAvaliacao>
+              <NumeroDeVendaAndAvaliacao> 16</NumeroDeVendaAndAvaliacao>
             </SpanVendaAndAvaliacao>
           </Vendidos>
           <Avalaciacoes>
@@ -53,19 +57,19 @@ const ContDownPromocional = () => {
           <WrapperTempoPromocao>
             <TempoPromocaoUnico>
               <SpanTempo>02</SpanTempo>
-              <SpanDiaHoraMinSec>Day</SpanDiaHoraMinSec>
+              <SpanDiaHoraMinSec> Day</SpanDiaHoraMinSec>
             </TempoPromocaoUnico>
             <TempoPromocaoUnico>
               <SpanTempo>24</SpanTempo>
-              <SpanDiaHoraMinSec>Hours</SpanDiaHoraMinSec>
+              <SpanDiaHoraMinSec> Hours</SpanDiaHoraMinSec>
             </TempoPromocaoUnico>
             <TempoPromocaoUnico>
               <SpanTempo>35</SpanTempo>
-              <SpanDiaHoraMinSec>Mins</SpanDiaHoraMinSec>
+              <SpanDiaHoraMinSec> Mins</SpanDiaHoraMinSec>
             </TempoPromocaoUnico>
             <TempoPromocaoUnico>
               <SpanTempo>02</SpanTempo>
-              <SpanDiaHoraMinSec>Secs</SpanDiaHoraMinSec>
+              <SpanDiaHoraMinSec> Secs</SpanDiaHoraMinSec>
             </TempoPromocaoUnico>
           </WrapperTempoPromocao>
         </ContainerTempoPromocao>
