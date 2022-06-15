@@ -1,7 +1,3 @@
-export interface FotoProdutoSecundarioInterface {
-  backgroundImg: string;
-}
-
 export interface FotoPrincipalProdutoInterface {
   backgroundImg: string;
 }
@@ -13,8 +9,4 @@ export interface FotoUnicaInterface {
 
 export interface GridProdutosItemInteracaoInterface {
   backgroundColor?: string;
-}
-
-export interface ContainerProdutosSecundariosInterface {
-  padding?: string;
 }

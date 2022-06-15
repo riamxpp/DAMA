@@ -1,17 +1,17 @@
 import styled from "styled-components";
 import {
-  ContainerProdutosSecundariosInterface,
   FotoPrincipalProdutoInterface,
-  FotoProdutoSecundarioInterface,
   FotoUnicaInterface,
   GridProdutosItemInteracaoInterface,
-} from "./GridProdutoProdutosPromocaoInterface";
+} from "./ProdutoPrincipalInterface";
 
 const GridProdutosPromocaoComponent = styled.article`
-  display: grid;
-  grid-template-columns: 300px 300px;
-  grid-template-rows: 350px 1fr;
-  font-family: "Roboto", sans-serif;
+  grid-column: 2/-1;
+  grid-row: 1/2;
+  @media (max-width: 800px) {
+    grid-column: 1;
+    grid-row: 2;
+  }
 `;
 
 const ContainerProdutoPrincipal = styled.div`
@@ -25,6 +25,13 @@ const ContainerProdutoPrincipal = styled.div`
     -webkit-box-shadow: -1px 0px 18px 2px rgba(0, 0, 0, 0.28);
     box-shadow: -1px 0px 18px 2px rgba(0, 0, 0, 0.28);
     transition: 0.3s;
+  }
+  @media (max-width: 950px) {
+    flex-direction: column;
+    padding: 2rem;
+  }
+  @media (max-width: 400px) {
+    padding: 2rem 0 0 0;
   }
 `;
 
@@ -44,6 +51,9 @@ const CarroselFotos = styled.div`
   height: auto;
   display: flex;
   justify-content: space-evenly;
+  @media (max-width: 950px) {
+    justify-content: initial;
+  }
 `;
 
 const FotoUnica = styled.div<FotoUnicaInterface>`
@@ -58,10 +68,16 @@ const FotoUnica = styled.div<FotoUnicaInterface>`
   border: ${(props) =>
     props.borderColor ? "2px solid #333" : "2px solid transparent"};
   cursor: pointer;
+  @media (max-width: 950px) {
+    margin-left: 50px;
+  }
 `;
 
 const ContainerInformacoesProduto = styled.div`
   margin-left: 50px;
+  @media (max-width: 950px) {
+    margin-top: 20px;
+  }
 `;
 
 const CategoriaProduto = styled.a`
@@ -92,30 +108,6 @@ const GridProdutosListaInfoProduto = styled.ul`
 
 const GridProdutosItemInfoProduto = styled.li``;
 
-const ContainerProdutosSecundarios = styled.div<ContainerProdutosSecundariosInterface>`
-  padding: ${(props) => props.padding};
-  transition: 0.3s;
-  &:hover {
-    -webkit-box-shadow: -1px 0px 18px 2px rgba(0, 0, 0, 0.28);
-    box-shadow: -1px 0px 18px 2px rgba(0, 0, 0, 0.28);
-    transition: 0.3s;
-  }
-`;
-
-const InfoProdutosSecundarios = styled.p`
-  font-size: 0.9rem;
-  line-height: 1.3;
-`;
-
-const FotoProdutoSecundario = styled.div<FotoProdutoSecundarioInterface>`
-  width: 200px;
-  height: 200px;
-  background-image: url(${(props) => props.backgroundImg});
-  background-repeat: no-repeat;
-  background-size: 70%;
-  background-position: 50% 50%;
-`;
-
 const GridProdutosContainerInteracoes = styled.nav`
   display: flex;
 `;
@@ -131,12 +123,14 @@ const GridProdutosItemInteracao = styled.div<GridProdutosItemInteracaoInterface>
   align-items: center;
   justify-content: center;
   cursor: pointer;
+  @media (max-width: 950px) {
+    margin: 20px 10px 0 0;
+  }
 `;
 
 export {
   GridProdutosPromocaoComponent,
   ContainerProdutoPrincipal,
-  ContainerProdutosSecundarios,
   WrapperProdutoFoto,
   FotoPrincipalProduto,
   CarroselFotos,
@@ -148,8 +142,6 @@ export {
   GridProdutosPreco,
   GridProdutosListaInfoProduto,
   GridProdutosItemInfoProduto,
-  InfoProdutosSecundarios,
-  FotoProdutoSecundario,
   GridProdutosContainerInteracoes,
   GridProdutosItemInteracao,
 };

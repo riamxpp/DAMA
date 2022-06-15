@@ -3,8 +3,18 @@ import { ContainerFotoProdutoInterface } from "./ContDownPromocionalInterface";
 
 const ContDownPromocionalComponent = styled.article`
   width: 300px;
-  height: 500px;
+  height: auto;
   font-family: "Roboto", sans-serif;
+  grid-column: 1/2;
+  grid-row: 1/-1;
+  @media (max-width: 950px) {
+    grid-row: 1/2;
+  }
+
+  @media (max-width: 800px) {
+    grid-column: 1;
+    grid-row: 1;
+  }
 `;
 
 const ContainerFotoProduto = styled.div<ContainerFotoProdutoInterface>`
