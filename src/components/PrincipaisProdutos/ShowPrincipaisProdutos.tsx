@@ -33,6 +33,7 @@ import ArrowRight from "../Icos/ArrowRigth";
 import Reta from "../Icos/Reta";
 import ShopCar from "../Icos/ShopCar";
 import { colors } from "../../colors";
+import { mudaSlideAoClick } from "../reusable/mudaSlideAoClick";
 
 const ShowPrincipaisProdutos = (props: ShowPrincipaisProdutosInterface) => {
   const [dadosProduto, setDadosProduto] = useState<ProdutoInterface>({
@@ -75,27 +76,6 @@ const ShowPrincipaisProdutos = (props: ShowPrincipaisProdutosInterface) => {
     }
     if (slidePosition !== PRIMEIRO_SLIDE)
       setSlidePosition((prev) => (prev -= 1));
-  }
-
-  function mudaSlideAoClique(position: number) {
-    let diferencaDeSlide = 0;
-    if (position > slidePosition) {
-      diferencaDeSlide = position - slidePosition;
-      setMoveSlide(
-        (prev) =>
-          (prev -=
-            diferencaDeSlide * Number(containerFotoRef.current?.offsetWidth))
-      );
-    } else if (position < slidePosition) {
-      diferencaDeSlide = slidePosition - position;
-
-      setMoveSlide(
-        (prev) =>
-          (prev +=
-            diferencaDeSlide * Number(containerFotoRef.current?.offsetWidth))
-      );
-    }
-    setSlidePosition(position);
   }
 
   function resetaSlide() {
@@ -150,7 +130,15 @@ const ShowPrincipaisProdutos = (props: ShowPrincipaisProdutosInterface) => {
                 backgroundColor={
                   index + 1 === slidePosition ? colors.PrimaryTextColor : ""
                 }
-                onClick={() => mudaSlideAoClique(index + 1)}
+                onClick={() =>
+                  mudaSlideAoClick(
+                    index + 1,
+                    slidePosition,
+                    setMoveSlide,
+                    containerFotoRef,
+                    setSlidePosition
+                  )
+                }
               ></ButtonFotoAtual>
             ))}
           </NavFotoAtual>

@@ -3,6 +3,7 @@ import "./App.css";
 import Header from "./components/Header/Header";
 import PrincipaisProdutos from "./components/PrincipaisProdutos/PrincipaisProdutos";
 import ProdutoPromocional from "./components/ProdutoPromocional/ProdutoPromocional";
+import WeekHots from "./components/WeekHots/WeekHots";
 
 function App() {
   return (
@@ -10,6 +11,7 @@ function App() {
       <Header />
       <PrincipaisProdutos />
       <ProdutoPromocional />
+      <WeekHots />
     </>
   );
 }

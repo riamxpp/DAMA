@@ -19,7 +19,7 @@ const ContainerProdutoPrincipal = styled.div`
   display: flex;
   grid-column: 1/-1;
   grid-row: 1;
-  padding: 2rem 2rem 0 2rem;
+  padding: 2rem 2rem 2rem 2rem;
   transition: 0.3s;
   &:hover {
     -webkit-box-shadow: -1px 0px 18px 2px rgba(0, 0, 0, 0.28);
