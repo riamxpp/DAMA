@@ -7,12 +7,20 @@ const WeekHotsInfoComponent = styled.div`
   display: flex;
   align-items: center;
   color: ${colors.PrimaryTextColor};
+  padding: 2rem 0 0 0;
+  @media (max-width: 800px) {
+    width: 100%;
+    height: auto;
+  }
 `;
 
 const WeekHotsInforContainer = styled.div`
   width: 100%;
   height: 320px;
   margin-left: 20px;
+  @media (max-width: 800px) {
+    height: auto;
+  }
 `;
 
 const WeekHotsInfoTitulo = styled.h2`

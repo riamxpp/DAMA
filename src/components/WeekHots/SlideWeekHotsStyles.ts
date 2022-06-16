@@ -10,6 +10,12 @@ const SlideWeekHotsComponent = styled.article`
   width: 400px;
   height: 100%;
   position: relative;
+  @media (max-width: 800px) {
+    padding: 5rem 0;
+  }
+  @media (max-width: 500px) {
+    width: 100%;
+  }
 `;
 
 const ContainerSlideWeek = styled.div`
