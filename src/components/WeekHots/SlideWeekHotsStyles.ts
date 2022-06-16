@@ -97,6 +97,7 @@ const ItemSlideFoto = styled.div<ItemSlideFotoInterface>`
 
 const ContainerButtons = styled.div`
   top: 0;
+  left: -5%;
   position: absolute;
   height: 100%;
   width: 100%;
