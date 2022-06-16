@@ -3,4 +3,5 @@ export const colors = {
   mainHeader: "#252525",
   PrimaryTextColor: "#fff",
   optionHeaderColor: "#5D5D5D",
+  amareloDetalhes: "#F5C616",
 };

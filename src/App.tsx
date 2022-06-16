@@ -3,6 +3,7 @@ import "./App.css";
 import Header from "./components/Header/Header";
 import PrincipaisProdutos from "./components/PrincipaisProdutos/PrincipaisProdutos";
 import ProdutoPromocional from "./components/ProdutoPromocional/ProdutoPromocional";
+import ShowDiferentesProdutos from "./components/ShowDiferentesProdutos/ShowDiferentesProdutos";
 import WeekHots from "./components/WeekHots/WeekHots";
 
 function App() {
@@ -12,6 +13,7 @@ function App() {
       <PrincipaisProdutos />
       <ProdutoPromocional />
       <WeekHots />
+      <ShowDiferentesProdutos />
     </>
   );
 }

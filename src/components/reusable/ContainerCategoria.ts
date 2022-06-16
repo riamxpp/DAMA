@@ -1,10 +1,15 @@
 import styled from "styled-components";
-import { ItemCategoriaInterface } from "./ContaienrCategoriaInterface";
+import {
+  ContainerCategoriaComponentInterface,
+  ItemCategoriaInterface,
+} from "./ContaienrCategoriaInterface";
 
-const ContainerCategoriaComponent = styled.div`
+const ContainerCategoriaComponent = styled.div<ContainerCategoriaComponentInterface>`
   display: flex;
   justify-content: space-evenly;
   width: 10rem;
+  opacity: ${(props) => (props.opacity ? props.opacity : "initial")};
+  transition: 0.3s;
 `;
 
 const ItemCategoria = styled.div<ItemCategoriaInterface>`
@@ -16,6 +21,7 @@ const ItemCategoria = styled.div<ItemCategoriaInterface>`
   background: ${(props) =>
     props.backgroundColor ? props.backgroundColor : "#2C5490"};
   border-radius: 50%;
+  cursor: pointer;
 `;
 
 export { ContainerCategoriaComponent, ItemCategoria };
