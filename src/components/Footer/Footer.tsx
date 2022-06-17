@@ -1,4 +1,5 @@
 import React from "react";
+import FooterFinal from "./FooterFinal";
 import FooterInitial from "./FooterInitial";
 import FooterPrincipal from "./FooterPrincipal";
 
@@ -7,6 +8,7 @@ const Footer = () => {
     <>
       <FooterInitial />
       <FooterPrincipal />
+      <FooterFinal />
     </>
   );
 };
