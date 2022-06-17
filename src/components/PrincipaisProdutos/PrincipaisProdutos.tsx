@@ -9,13 +9,23 @@ import { TypeProduto } from "./ShowPrincipaisProdutosInterface";
 
 const PrincipaisProdutos = () => {
   const [produtoAtual, setProdutoAtual] = useState<TypeProduto>("fone");
+  const [slidePosition, setSlidePosition] = useState(1);
+  const [moveSlide, setMoveSlide] = useState(0);
 
   return (
     <PrincipaisProdutosComponent>
       <ContainerProdutosPrincipais>
-        <NavProdutos setProdutoAtual={setProdutoAtual}></NavProdutos>
+        <NavProdutos
+          setSlidePosition={setSlidePosition}
+          setMoveSlide={setMoveSlide}
+          setProdutoAtual={setProdutoAtual}
+        ></NavProdutos>
         <ShowPrincipaisProdutos
           produtoAtual={produtoAtual}
+          slidePosition={slidePosition}
+          setSlidePosition={setSlidePosition}
+          moveSlide={moveSlide}
+          setMoveSlide={setMoveSlide}
         ></ShowPrincipaisProdutos>
       </ContainerProdutosPrincipais>
     </PrincipaisProdutosComponent>

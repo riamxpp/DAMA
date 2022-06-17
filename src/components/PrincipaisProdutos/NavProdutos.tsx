@@ -22,6 +22,8 @@ const NavProdutos = (props: NavProdutosInterface) => {
       event.currentTarget.ariaLabel === "iphone"
     )
       props.setProdutoAtual(event.currentTarget.ariaLabel);
+    props.setMoveSlide(0);
+    props.setSlidePosition(1);
   }
 
   return (

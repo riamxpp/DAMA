@@ -36,14 +36,13 @@ import { colors } from "../../colors";
 import { mudaSlideAoClick } from "../reusable/mudaSlideAoClick";
 
 const ShowPrincipaisProdutos = (props: ShowPrincipaisProdutosInterface) => {
+  const [tamanhoSlide, setTamanhoSlide] = useState(0);
   const [dadosProduto, setDadosProduto] = useState<ProdutoInterface>({
     name: dados[props.produtoAtual].name,
     description: dados[props.produtoAtual].description,
     price: dados[props.produtoAtual].price,
     pictures: [...dados[props.produtoAtual].pictures],
   });
-  const [slidePosition, setSlidePosition] = useState(1);
-  const [moveSlide, setMoveSlide] = useState(0);
   const containerFotoRef = useRef<HTMLDivElement>(null);
   const PRIMEIRO_SLIDE = 1;
   const QUANTIDADE_FOTOS = dadosProduto.pictures.length;
@@ -55,32 +54,30 @@ const ShowPrincipaisProdutos = (props: ShowPrincipaisProdutosInterface) => {
       price: dados[props.produtoAtual].price,
       pictures: [...dados[props.produtoAtual].pictures],
     });
+    if (containerFotoRef.current?.offsetWidth)
+      setTamanhoSlide(containerFotoRef.current?.offsetWidth);
+
     window.addEventListener("resize", resetaSlide);
     return () => window.removeEventListener("resize", resetaSlide);
   }, [props.produtoAtual]);
 
   function nextSlide() {
-    if (containerFotoRef.current?.offsetWidth)
-      setMoveSlide(
-        (prev) => (prev -= Number(containerFotoRef.current?.offsetWidth))
-      );
-    if (slidePosition !== QUANTIDADE_FOTOS)
-      setSlidePosition((prev) => (prev += 1));
+    props.setMoveSlide((prev) => (prev -= tamanhoSlide));
+
+    if (props.slidePosition !== QUANTIDADE_FOTOS)
+      props.setSlidePosition((prev) => (prev += 1));
   }
 
   function prevSlide() {
-    if (containerFotoRef.current) {
-      setMoveSlide(
-        (prev) => (prev += Number(containerFotoRef.current?.offsetWidth))
-      );
-    }
-    if (slidePosition !== PRIMEIRO_SLIDE)
-      setSlidePosition((prev) => (prev -= 1));
+    props.setMoveSlide((prev) => (prev += tamanhoSlide));
+
+    if (props.slidePosition !== PRIMEIRO_SLIDE)
+      props.setSlidePosition((prev) => (prev -= 1));
   }
 
   function resetaSlide() {
-    setSlidePosition(PRIMEIRO_SLIDE);
-    setMoveSlide(0);
+    props.setSlidePosition(PRIMEIRO_SLIDE);
+    props.setMoveSlide(0);
   }
 
   return (
@@ -106,7 +103,7 @@ const ShowPrincipaisProdutos = (props: ShowPrincipaisProdutosInterface) => {
         </WrapperInformacoesProduto>
         {/* Slide */}
         <WrapperFotosProduto>
-          <ContainerFotosProdutos moveSlide={moveSlide}>
+          <ContainerFotosProdutos moveSlide={props.moveSlide}>
             {dadosProduto.pictures.map((item, index) => (
               <FotoProdutoPrincipal
                 key={index}
@@ -120,7 +117,8 @@ const ShowPrincipaisProdutos = (props: ShowPrincipaisProdutosInterface) => {
       {/* navegação a direita */}
       <NavInformacoesProduto>
         <SpanQuantidadeDeFotos>
-          <SpanFotoAtual>{slidePosition}</SpanFotoAtual>/{QUANTIDADE_FOTOS}
+          <SpanFotoAtual>{props.slidePosition}</SpanFotoAtual>/
+          {QUANTIDADE_FOTOS}
         </SpanQuantidadeDeFotos>
         <ContainerFotoAtual>
           <NavFotoAtual>
@@ -128,15 +126,17 @@ const ShowPrincipaisProdutos = (props: ShowPrincipaisProdutosInterface) => {
               <ButtonFotoAtual
                 key={index}
                 backgroundColor={
-                  index + 1 === slidePosition ? colors.PrimaryTextColor : ""
+                  index + 1 === props.slidePosition
+                    ? colors.PrimaryTextColor
+                    : ""
                 }
                 onClick={() =>
                   mudaSlideAoClick(
                     index + 1,
-                    slidePosition,
-                    setMoveSlide,
+                    props.slidePosition,
+                    props.setMoveSlide,
                     containerFotoRef,
-                    setSlidePosition
+                    props.setSlidePosition
                   )
                 }
               ></ButtonFotoAtual>
@@ -144,10 +144,10 @@ const ShowPrincipaisProdutos = (props: ShowPrincipaisProdutosInterface) => {
           </NavFotoAtual>
         </ContainerFotoAtual>
         <ContainerNextAndPrevFoto>
-          <ButtonPrev disabled={slidePosition === 1} onClick={prevSlide}>
+          <ButtonPrev disabled={props.slidePosition === 1} onClick={prevSlide}>
             <ArrowLeft
               currentColor={
-                slidePosition === 1 ? colors.initialHeader : "white"
+                props.slidePosition === 1 ? colors.initialHeader : "white"
               }
             />
           </ButtonPrev>
@@ -155,12 +155,12 @@ const ShowPrincipaisProdutos = (props: ShowPrincipaisProdutosInterface) => {
             <Reta />
           </RetaSpan>
           <ButtonNext
-            disabled={slidePosition === QUANTIDADE_FOTOS}
+            disabled={props.slidePosition === QUANTIDADE_FOTOS}
             onClick={nextSlide}
           >
             <ArrowRight
               currentColor={
-                slidePosition === QUANTIDADE_FOTOS
+                props.slidePosition === QUANTIDADE_FOTOS
                   ? colors.initialHeader
                   : "white"
               }

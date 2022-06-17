@@ -7,6 +7,10 @@ export type TypeProduto =
 
 export interface ShowPrincipaisProdutosInterface {
   produtoAtual: TypeProduto;
+  slidePosition: number;
+  setSlidePosition: (num: React.SetStateAction<number>) => void;
+  moveSlide: number;
+  setMoveSlide: (num: React.SetStateAction<number>) => void;
 }
 
 export interface ProdutoInterface {
